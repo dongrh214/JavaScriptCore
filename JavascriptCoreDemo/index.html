@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <link href="index.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <p id="container1">JsCallOc('参数1');</p>
+        <hr/>
+        <p id="container2">JsCallOc('参数1','参数2');</p>
+        <hr/>
+        <p id="container3">JsCallOcMethod2SecondMessage('a','b').</p>
+        <hr/>
+    </body>
+    <script type="application/javascript">
+        var container1 = document.getElementById('container1');
+        container1.onclick = function(){
+            JsCallOc('参数1');
+        }
+    
+        var container2 = document.getElementById('container2');
+        container2.onclick = function(){
+            JsCallOc('参数1','参数2');
+        }
+    
+        var container3 = document.getElementById('container3');
+        container3.onclick = function(){
+            ocMethods.JsCallOcMethod1(
+               function(){
+                    alert();
+               }
+            )
+        }
+    
+    </script>
+</html>
