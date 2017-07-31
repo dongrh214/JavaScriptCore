@@ -7,7 +7,7 @@
         <hr/>
         <p id="container2">JsCallOc('参数1','参数2');</p>
         <hr/>
-        <p id="container3">JsCallOcMethod2SecondMessage('a','b').</p>
+        <p id="container3">JsCallOcMethod1().</p>
         <hr/>
     </body>
     <script type="application/javascript">
@@ -23,11 +23,8 @@
     
         var container3 = document.getElementById('container3');
         container3.onclick = function(){
-            ocMethods.JsCallOcMethod1(
-               function(){
-                    alert();
-               }
-            )
+            var params = JSON.stringify({"name":'zhangsan',"age":"20"})
+            ocMethods.JsCallOcMethod1(params)
         }
     
     </script>

@@ -15,7 +15,10 @@
     NSLog(@"there is no message");
 }
 -(void)JsCallOcMethod1:(NSString *)message{
-    NSLog(@"the message is %@",message);
+    
+    NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSLog(@"the message is %@",dic);
     
 }
 -(void)JsCallOcMethod2:(NSString *)message1 SecondMessage:(NSString *)message2{
