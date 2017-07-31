@@ -58,6 +58,9 @@
     JSContext *context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     //确保js存在alert方法
     NSString *alertJs = @"alert('test js call oc')";
+    context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
+        NSLog(@"JS Error: %@", exception);
+    };
     //调用上下文执行js方法
     [context evaluateScript:alertJs];
     
@@ -69,6 +72,7 @@
         for (id obj in args) {
             NSLog(@"%@",obj);
         }
+        JSContext *context = [JSContext currentContext]; // 这里不要用self.context 会导致循环引用
     };
     //此处oc对应的方法尚未报漏给js，我们只能通过context触发js方法 在oc里调起js方法
     NSString *func1 = @"JsCallOc('参数1')";
